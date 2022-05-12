@@ -12,7 +12,7 @@
 			$filial    = $_POST['filial'];
 			$cpf    = $_POST['cpf'];
 			
-			$sql = "INSERT INTO motorista(nome, id_filial, cpf) VALUES ('{$nome}', '{$filial}', '{$cpf}')";
+			$sql = "INSERT INTO motorista(nome, id_filial, cpf, foto) VALUES ('{$nome}', '{$filial}', '{$cpf}', 'default.jpg')";
 			$query = mysqli_query($conexao, $sql);
 			
 			if($query) {
@@ -21,7 +21,7 @@
 				echo 'Não foi possível cadastrar o Motorista! Erro: ' . mysqli_error($conexao);
 			}
 		?>
-		<a href="../motoristas.php">Voltar</a>
+		<a href="../main.php">Voltar</a>
 	</body> 
 </html>
 <?php

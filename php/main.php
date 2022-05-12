@@ -1,20 +1,18 @@
 <?php
+	include('ler_session.php');
 	include('conexao.php');
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Transportadora - Atividades</title>
-		<style type="text/css">
-			table {
-				border-collapse: collapse;
-			}
-			th, td {
-				border: 1px solid black;
-			}
-		</style>
+		
+		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
+
+	<h1>Olá <?php echo $_SESSION['usuario']['apelido']; ?>!</h1>
+	
 		<?php
 			$sql = "SELECT * FROM motorista AS m 
             JOIN carro AS c ON m.id_carro = c.id 
@@ -28,9 +26,9 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Nome</th>
-                    <th>Carro</th>
-                    <th>Entrega atual</th>
+					<th><a href="lista_motorista.php">Motorista</a></th>
+                    <th><a href="lista_carro.php">Carro</a></th>
+                    <th><a href="lista_carga.php">Carga</a></th>
                     <th>Com destino a</th>
 				</tr>
 			</thead>
@@ -55,7 +53,8 @@
 			</tbody>
             
 		</table>
-        <a href="index.php">voltar</a>
+        <li><a href="index.php">voltar</a></li>
+		<li><a href="sair.php">Sair</a></li>
 		<?php
 			}
 		?>

@@ -5,6 +5,8 @@
 <html>
 	<head>
 		<title>Transportadora - Cadastrar novo carro</title>
+		
+		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
 		<form action="Db/cadastra_carro.php" method="POST">
@@ -36,6 +38,6 @@
 			<button type="submit">Cadastrar</button>
 		</form>
         <br>
-        <a href="motoristas.php">voltar</a>
+        <a href="main.php">voltar</a>
 	</body>
 </html>

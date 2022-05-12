@@ -21,7 +21,7 @@
 				echo 'Não foi possível cadastrar o Carro! Erro: ' . mysqli_error($conexao);
 			}
 		?>
-        <a href="../motoristas.php">Voltar</a>
+        <a href="../main.php">Voltar</a>
 	</body>
 </html>
 <?php

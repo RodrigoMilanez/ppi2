@@ -5,6 +5,8 @@
 <html>
 	<head>
 		<title>Transportadora - Cadastrar novo carro</title>
+		
+		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
 		<form action="Db/cadastra_carga.php" method="POST">
@@ -14,9 +16,6 @@
 			
 			<label for="destino">Destino (onde o produto deve ser entregue):</label><br>
 			<input type="destino" name="destino" id="destino" maxlength="70"><br><br>
-            
-            <label for="partida">Partida (de onde o produto será enviado):</label><br>
-			<input type="partida" name="partida" id="partida" maxlength="70"><br><br>
 
             <label for="motorista">Motorista responsável:</label><br>
 			<select name="motorista" id="motorista">
@@ -39,6 +38,6 @@
 			<button type="submit">Cadastrar</button>
 		</form>
         <br>
-        <a href="motoristas.php">voltar</a>
+		<a href="main.php">voltar</a>
 	</body>
 </html>
