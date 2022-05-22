@@ -10,7 +10,11 @@
 		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
-
+	<?php
+		if ($_SESSION['usuario']['permissao']==1){
+			echo "Você está logado como administrador!";
+		}
+	?>
 	<h1>Olá <?php echo $_SESSION['usuario']['apelido']; ?>!</h1>
 	
 		<?php
@@ -49,6 +53,11 @@
 					<th><a href="cadastrar_motorista.php">Cadastrar novo motorista</a></th>
 					<th><a href="novo_carro.php">Cadastrar novo carro</a></th>
 					<th><a href="nova_carga.php" span="2">Criar nova ordem de carga</a> </th>
+					<th><?php
+						if ($_SESSION['usuario']['permissao']==1){
+							echo "<a href=\"novo_usuario.php\">Criar novo usuário</a>";
+						}
+					?></th>
 				</tr>
 			</tbody>
             
@@ -58,6 +67,7 @@
 		<?php
 			}
 		?>
+		
 	</body>
 </html>
 <?php

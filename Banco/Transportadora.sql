@@ -42,14 +42,15 @@ CREATE TABLE usuario (
     id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     apelido varchar(100) NOT NULL,
     senha varchar(100) NOT NULL,
+    permissao int(11) NOT NULL
 );
 
 INSERT INTO filial(localidade) VALUES ( "Criciúma");
 INSERT INTO filial(localidade) VALUES ("Lages");
 
-INSERT INTO usuario(apelido,senha) VALUES ("ADMIN","4a7d1ed414474e4033ac29ccb8653d9b");
-INSERT INTO usuario(apelido,senha) VALUES ("Marcelo","PlanetHemp");
-INSERT INTO usuario(apelido,senha) VALUES ("Alexandre","CBJR");
+INSERT INTO usuario(apelido,senha,permissao) VALUES ("ADMIN","4a7d1ed414474e4033ac29ccb8653d9b",1);/*senha: 0000 / permissão: Administrador*/
+INSERT INTO usuario(apelido,senha,permissao) VALUES ("Marcelo","0ed00a64c034b61a87c7518f7aa5356d",2);/*senha: PlanetHemp / permissão: Administrador*/
+INSERT INTO usuario(apelido,senha,permissao) VALUES ("Alexandre","6cdda6c16abb26c4e2063db0a37da3b8",2);/*senha: CBJR / permissão: Usuário*/
 
 
 INSERT INTO carro(placa, modelo, id_filial) VALUES ("856-GBA", "Sandero", 1);
