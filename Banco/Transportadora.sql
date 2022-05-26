@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS carro;
 DROP TABLE IF EXISTS carga;
 DROP TABLE IF EXISTS filial;
 DROP TABLE IF EXISTS usuario;
+DROP TABLE IF EXISTS permissoes;
 
 
 
@@ -44,6 +45,15 @@ CREATE TABLE usuario (
     senha varchar(100) NOT NULL,
     permissao int(11) NOT NULL
 );
+
+CREATE TABLE permissoes (
+    id int(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    descricao varchar(100) NOT NULL
+);
+
+INSERT INTO permissoes(descricao) VALUES ("administrador");
+INSERT INTO permissoes(descricao) VALUES ("moderador");
+INSERT INTO permissoes(descricao) VALUES ("consultor");
 
 INSERT INTO filial(localidade) VALUES ( "Criciúma");
 INSERT INTO filial(localidade) VALUES ("Lages");

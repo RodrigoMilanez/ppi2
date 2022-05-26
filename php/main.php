@@ -55,7 +55,7 @@
 					<th><a href="nova_carga.php" span="2">Criar nova ordem de carga</a> </th>
 					<th><?php
 						if ($_SESSION['usuario']['permissao']==1){
-							echo "<a href=\"novo_usuario.php\">Criar novo usuário</a>";
+							echo "<a href=\"adm.php\">Página de administração</a>";
 						}
 					?></th>
 				</tr>

@@ -4,6 +4,7 @@
     if ($_SESSION['usuario']['permissao']>1){
         header('Location: main.php');
     }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,8 @@
 			<label for="adm">Administrador</label><br>
 			<input type="radio" id="permissao" name="adm" value="2">
 			<label for="adm">Usuario</label><br>
+			<input type="radio" id="permissao" name="adm" value="3">
+			<label for="adm">Moderador</label><br>
 			<br>
 			<button type="submit">Cadastrar</button>
 		</form>
