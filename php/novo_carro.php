@@ -2,6 +2,20 @@
 	include('conexao.php');
 ?>
 <!DOCTYPE html>
+<script type="text/javascript" src="assests/jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$.ajax({
+					url: "Db/JQuery/recupera_filial.php",
+					method: 'GET'
+				}).done(function (data) {
+					var obj = JSON.parse(data);
+					$.each(obj, function(i, v) {
+						$('#filial').append('<option value="' + v.id + '">' + v.localidade +'</option>');
+					});
+				});
+			});
+		</script>
 <html>
 	<head>
 		<title>Transportadora - Cadastrar novo carro</title>
@@ -19,17 +33,6 @@
 
             <label for="filial">Filial:</label><br>
 			<select name="filial" id="filial">
-				<?php
-					$sql = "SELECT * FROM filial ";
-					$query = mysqli_query($conexao, $sql);
-					while ($item = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-                        echo($item);
-				?>
-				<option value="<?php echo $item['id']?>"><?php echo $item['localidade']; ?></option>
-				<?php
-					}
-                    
-				?>
             </select><br><br>
 
 

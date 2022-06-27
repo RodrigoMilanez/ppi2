@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Abr-2022 às 22:27
+-- Tempo de geração: 30-Maio-2022 às 03:36
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 7.4.11
 
@@ -103,19 +103,40 @@ CREATE TABLE `motorista` (
   `nome` varchar(255) NOT NULL,
   `id_carro` int(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `id_filial` int(11) NOT NULL
+  `id_filial` int(11) NOT NULL,
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `motorista`
 --
 
-INSERT INTO `motorista` (`id`, `nome`, `id_carro`, `cpf`, `id_filial`) VALUES
-(1, 'Alexandre', 1, '43084962090', 1),
-(2, 'Marina', 2, '89410480019', 1),
-(3, 'João', 3, '61492650056', 1),
-(4, 'Marcelo', 4, '57791931001', 2),
-(5, 'Vinicius', 5, '93555039032', 2);
+INSERT INTO `motorista` (`id`, `nome`, `id_carro`, `cpf`, `id_filial`, `foto`) VALUES
+(1, 'Alexandre', 1, '43084962090', 1, 'default.jpg'),
+(2, 'Marina', 2, '89410480019', 1, 'default.jpg'),
+(3, 'João', 3, '61492650056', 1, 'default.jpg'),
+(4, 'Marcelo', 4, '57791931001', 2, 'default.jpg'),
+(5, 'Vinicius', 5, '93555039032', 2, 'default.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `permissoes`
+--
+
+CREATE TABLE `permissoes` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `permissoes`
+--
+
+INSERT INTO `permissoes` (`id`, `descricao`) VALUES
+(1, 'administrador'),
+(2, 'moderador'),
+(3, 'consultor');
 
 -- --------------------------------------------------------
 
@@ -126,17 +147,18 @@ INSERT INTO `motorista` (`id`, `nome`, `id_carro`, `cpf`, `id_filial`) VALUES
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `apelido` varchar(100) NOT NULL,
-  `senha` varchar(100) NOT NULL
+  `senha` varchar(100) NOT NULL,
+  `permissao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `apelido`, `senha`) VALUES
-(1, 'ADMIN', '0000'),
-(2, 'Marcelo', 'PlanetHemp'),
-(3, 'Alexandre', 'CBJR');
+INSERT INTO `usuario` (`id`, `apelido`, `senha`, `permissao`) VALUES
+(1, 'ADMIN', '4a7d1ed414474e4033ac29ccb8653d9b', 1),
+(2, 'Marcelo', '0ed00a64c034b61a87c7518f7aa5356d', 2),
+(3, 'Alexandre', '6cdda6c16abb26c4e2063db0a37da3b8', 2);
 
 --
 -- Índices para tabelas despejadas
@@ -164,6 +186,12 @@ ALTER TABLE `filial`
 -- Índices para tabela `motorista`
 --
 ALTER TABLE `motorista`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `permissoes`
+--
+ALTER TABLE `permissoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -199,6 +227,12 @@ ALTER TABLE `filial`
 --
 ALTER TABLE `motorista`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `permissoes`
+--
+ALTER TABLE `permissoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

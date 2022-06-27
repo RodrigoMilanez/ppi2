@@ -5,7 +5,27 @@
 <html>
 	<head>
 		<title>Transportadora - ordens de carga</title>
-		
+		<script type="text/javascript" src="assests/jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready( function(){
+				$('button').on('click', function (){
+					var id = $(this).closest('td').attr('id');
+					var ele = $(this).closest('tr');
+					if(confirm('Tem certeza que você quer excluir a carga?')){
+						$.ajax({
+							url:'Db/excluir_carga.php?id='+ id,
+							type:'GET',
+					}).done(function(retorno){
+						if(retorno){
+							ele.remove();
+						}
+
+					})
+				}
+				});
+
+			});
+		</script>
 		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
@@ -27,6 +47,7 @@
 					<th>Status <br>C-concluído,<br> A-Ativo</th>
 				</tr>
 			</thead>
+				
 			<tbody>
 				<?php
 					while ($item = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
@@ -36,9 +57,9 @@
                     <td><?php echo $item['produto']; ?></td>
                     <td><?php echo $item['destino']; ?></td>
 					<td><?php echo $item['status_']; ?></td>
-                    <td><a href="Db/excluir_carga.php?id=<?php echo $item['id']?>">Excluir Ordem</a></td>
+                    <td id="<?php echo $item['id']; ?>"><button type="button" id="excluir" class="<?php echo $item['id']?>">Excluir carga</button>
 					<td><a href="alterar_carga.php?id=<?php echo $item['id']?>">Alterar Ordem</a></td>
-					</tr>
+				</tr>
 				<?php
 					}
 				?>

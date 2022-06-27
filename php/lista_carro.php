@@ -5,7 +5,32 @@
 <html>
 	<head>
 		<title>Transportadora - Frota</title>
-		
+		<script type="text/javascript" src="assests/jquery.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready( function(){
+				$('button').on('click', function (){
+					var id = $(this).closest('td').attr('id');
+					var ele = $(this).parent().parent();
+					if(confirm('Tem certeza que você quer excluir o carro?')){
+						$.ajax({
+							url:'Db/excluir_carro.php?id='+ id,
+							type:'GET',
+							cache: false,
+					}).done(function(retorno){
+						if(retorno){
+							ele.remove();
+						}else{
+						
+						}
+
+					})
+				}
+				});
+
+			});
+
+		</script>
 		<link rel="stylesheet" href="assests/style.css">
 	</head>
 	<body>
@@ -35,7 +60,8 @@
 					<td><?php echo $item['id']; ?></td>
                     <td><?php echo $item['modelo']; ?></td>
                     <td><?php echo $item['placa']; ?></td>
-                    <td><a href="Db/excluir_carro.php?id=<?php echo $item['id']?>">Excluir carro da frota</a></td>
+                    <td id="<?php echo $item['id']; ?>"><button type="button" id="excluir" class="<?php echo $item['id']?>">Excluir carro</button>
+					</td>
 					<td><a href="alterar_carro.php?id=<?php echo $item['id']?>">Alterar carro da frota</a></td>
 					</tr>
 				<?php

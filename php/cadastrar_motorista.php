@@ -2,7 +2,33 @@
 	include('conexao.php');
 ?>
 <!DOCTYPE html>
+
 <html>
+<script type="text/javascript" src="assests/jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$.ajax({
+					url: "Db/JQuery/recupera_carro.php",
+					method: 'GET'
+				}).done(function (data) {
+					var obj = JSON.parse(data);
+					$.each(obj, function(i, v) {
+						$('#carro').append('<option value="' + v.id + '">' + v.placa +'</option>');
+					});
+				});
+			});
+			$(document).ready(function () {
+				$.ajax({
+					url: "Db/JQuery/recupera_filial.php",
+					method: 'GET'
+				}).done(function (data) {
+					var obj = JSON.parse(data);
+					$.each(obj, function(i, v) {
+						$('#filial').append('<option value="' + v.id + '">' + v.localidade +'</option>');
+					});
+				});
+			});
+		</script>
 	<head>
 		<title>Transportadora - Cadastrar Novo motorista</title>
 		
@@ -20,32 +46,10 @@
             
             <label for="carro">Carro:</label><br>
 			<select name="carro" id="carro">
-				<?php
-					$sql = "SELECT * FROM carro ";
-					$query = mysqli_query($conexao, $sql);
-					while ($item = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-                        echo($item);
-				?>
-				<option value="<?php echo $item['id']?>"><?php echo $item['placa']; ?></option>
-				<?php
-					}
-                    
-				?>
             </select><br><br>
 			
             <label for="filial">Filial:</label><br>
-			<select name="filial" id="filial">
-				<?php
-					$sql = "SELECT * FROM filial ";
-					$query = mysqli_query($conexao, $sql);
-					while ($item = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-                        echo($item);
-				?>
-				<option value="<?php echo $item['id']?>"><?php echo $item['localidade']; ?></option>
-				<?php
-					}
-                    
-				?>
+			<select name="filial" id="filial">	
             </select><br><br>
 
 			
